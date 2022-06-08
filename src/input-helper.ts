@@ -42,6 +42,17 @@ export async function getInputs(): Promise<IGitSourceSettings> {
     result.repositoryPath
   )
 
+  // https://github.com/actions/checkout/issues/197
+  // if (
+  //   !(result.repositoryPath + path.sep).startsWith(
+  //     githubWorkspacePath + path.sep
+  //   )
+  // ) {
+  //   throw new Error(
+  //     `Repository path '${result.repositoryPath}' is not under '${githubWorkspacePath}'`
+  //   )
+  // }
+
   // Workflow repository?
   const isWorkflowRepository =
     qualifiedRepository.toUpperCase() ===
